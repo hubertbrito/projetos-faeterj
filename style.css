@@ -1,0 +1,89 @@
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #69c3f7;
+  --color-text-main: #000000;
+  --color-primary: #00ffb3;
+  --wrapper-height: 6ovh;
+  --image-max-width: 200px;
+  --image-margin: 4rem;
+  --font-family: "HKGrotesk";
+  --font-family-header: "HKGrotesk";
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+    format("opentype");
+}
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+    format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: HKGrotesk;
+  background-color: var(--color-bg);
+}
+
+header {  
+  color: #000000;      
+  font-style: normal;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 105%;
+  margin: 30px 0 30px 0;  
+  border-bottom: 4px solid #fff;
+  text-align: center;
+}
+
+footer {
+  font-size: 20px;
+  justify-content: space-between;
+  margin: 100px 0 100px 0;
+  width: 100%;
+  border-top: 4px solid #fff;
+}
+
+main div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin: 18px 0 0 0;
+}
+
+main div * {
+  margin: 0 10px 0 10px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button  {
+  font-family: HKGrotesk;
+  padding: 12px 12px;
+  font-size: 20px;
+  line-height: 1px;
+  height: 25px;
+  align-items: center;
+  cursor: pointer;
+  background: #afd3c4;
+  border: 1px solid #000000d7;
+  box-sizing: border-box;
+  border-radius: 7px;
+  text-decoration: none;
+  color: rgb(22, 110, 51);
+}
+
+
+div {
+  margin: 24px 0 24px 0;  
+}
+

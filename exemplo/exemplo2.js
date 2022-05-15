@@ -1,0 +1,68 @@
+//---------------------------------------------------------------
+// Segundo Exemplo de Execução Assíncrona. Agora COM Promise
+//---------------------------------------------------------------
+
+// Sleep Síncrono. Trava toda single thread
+function sleep(delay) {
+    var start = new Date().getTime();
+    while (new Date().getTime() < start + delay);
+}
+
+//---------------------------------------------------------------
+
+function promessaAlternativa(token) {
+  return new Promise(
+    function(resolve,reject) {
+      if(token == 'X') 
+        resolve('Ok'); 
+      else 
+        reject('Falha');
+    });  
+}
+
+//---------------------------------------------------------------
+var tokenGlobal;
+
+function funcConteudo(resolve,reject) {
+  // 
+  // CONTEÚDO DA FUNÇÃO...
+  //
+  setTimeout(() => { 
+        let sorteio = Math.random() * 100;
+        if(sorteio < 50)
+          resolve("(" + sorteio + ") Resolvido após Timeout: " + tokenGlobal);
+        else
+          reject( "(" + sorteio + ") Rejeitado após o Timeout: " + tokenGlobal);
+      }, 2000);
+}
+
+function funcProm(token) {
+
+  tokenGlobal = token;
+    
+  // (1) Na Promise, o contexto de execução da função indicada será Assíncrono!
+  // Não vemos isto, pois está no código (nativo) da classe Promise.
+  // (2) A função vinculada à Promise irá dormir por 1 segundo para
+  // depois escrever na console e executar a função resolve;
+  return new Promise(funcConteudo);  
+}
+
+//---------------------------------------------------------------
+
+async function exemplo () {
+  try {
+    let resultado = funcProm('X');
+    console.log( "a) resultado = " + await resultado ); // Lista 'Promise'
+    console.log('ESTOU NO MEIO');
+    console.log( "b) resultado = " + await resultado ); // Lista o 'Resolve' da Promise
+    console.log(  "Chamando funcProm com Y " + await funcProm('Y') );  
+    console.log( "c) resultado = " + await resultado ); // Lista 'Promise'
+  }
+  catch(error) { 
+    alert('Erro:' + error);
+  }
+}
+
+exemplo();
+console.log("Após a chamada de exemplo...");
+
